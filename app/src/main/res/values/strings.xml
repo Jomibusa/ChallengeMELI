@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ChallengeMELI</string>
+    <string name="text_splash_title">Consumo de API...</string>
 </resources>
