@@ -25,11 +25,11 @@
     </fragment>
     <fragment
         android:id="@+id/listProductsFragment"
-        android:name="com.jomibusa.challengemeli.view.ListProductsFragment"
+        android:name="com.jomibusa.challengemeli.view.ListItemsFragment"
         android:label="fragment_list_products"
-        tools:layout="@layout/fragment_list_products">
+        tools:layout="@layout/fragment_list_items">
         <argument
-            android:name="nameProduct"
+            android:name="nameItem"
             app:argType="string" />
     </fragment>
 

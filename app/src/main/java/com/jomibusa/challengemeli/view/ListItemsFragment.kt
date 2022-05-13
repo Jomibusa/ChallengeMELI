@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.jomibusa.challengemeli.base.BaseFragment
 import com.jomibusa.challengemeli.databinding.FragmentListProductsBinding
 
-class ListProductsFragment : BaseFragment() {
+class ListItemsFragment : BaseFragment() {
 
     private var _binding: FragmentListProductsBinding? = null
     private val binding get() = _binding!!
