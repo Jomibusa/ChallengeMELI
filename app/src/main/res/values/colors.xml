@@ -9,4 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="meli_yellow">#ffe600</color>
     <color name="meli_blue">#2d3277</color>
+    <color name="default_field">#d9d9d9</color>
+    <color name="error">#fa1e49</color>
+    <color name="secondary_gray">#bababf</color>
+    <color name="mtrl_textinput_default_box_stroke_color">#2d3277</color>
 </resources>

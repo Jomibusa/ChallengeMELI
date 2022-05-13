@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">ChallengeMELI</string>
     <string name="text_splash_title">Consumo de API...</string>
+    <string name="text_api_meli">Api MercadoLibre</string>
+    <string name="text_hint_search_product">Busca un producto...</string>
+    <string name="text_button_search">Buscar</string>
 </resources>
