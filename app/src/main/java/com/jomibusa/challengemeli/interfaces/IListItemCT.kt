@@ -8,9 +8,7 @@ interface IListItemCT {
 
     interface Presenter {
 
-        fun start(context: Context, recyclerView: RecyclerView, itemName: String)
-
-        fun doFilter(search: String?)
+        fun start(recyclerView: RecyclerView, itemName: String)
 
     }
 

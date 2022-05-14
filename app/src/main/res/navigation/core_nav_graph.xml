@@ -31,6 +31,18 @@
         <argument
             android:name="nameItem"
             app:argType="string" />
+        <action
+            android:id="@+id/action_listProductsFragment_to_detailItemFragment"
+            app:destination="@id/detailItemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailItemFragment"
+        android:name="com.jomibusa.challengemeli.view.DetailItemFragment"
+        android:label="fragment_detail_item"
+        tools:layout="@layout/fragment_detail_item">
+        <argument
+            android:name="item"
+            app:argType="com.jomibusa.challengemeli.data.model.Results" />
     </fragment>
 
 </navigation>
