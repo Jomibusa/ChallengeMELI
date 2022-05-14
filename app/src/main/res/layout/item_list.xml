@@ -28,15 +28,16 @@
             app:layout_constraintGuide_percent="0.35" />
 
         <ImageView
+            android:id="@+id/image_view_item"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_margin="10dp"
             android:scaleType="fitCenter"
+            android:src="@drawable/default_item"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/guideline"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/text_view_name_item"
@@ -71,7 +72,7 @@
             tools:text="6.200.000" />
 
         <TextView
-            android:id="@+id/text_view_email"
+            android:id="@+id/text_view_quantity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
@@ -95,19 +96,20 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:drawablePadding="10dp"
             android:ellipsize="end"
             android:gravity="center"
             android:singleLine="true"
             android:text="@string/text_allow_mercado_pago"
-            android:textColor="@color/purple_700"
+            android:textColor="@color/meli_blue"
             android:textSize="14sp"
             android:textStyle="bold"
+            android:visibility="gone"
             app:drawableStartCompat="@drawable/ic_check"
             app:drawableTint="@color/meli_blue"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_view_email" />
+            app:layout_constraintTop_toBottomOf="@id/text_view_quantity"
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

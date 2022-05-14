@@ -11,10 +11,10 @@ class RetrofitManager {
 
     private val TAG = RetrofitManager::class.java.simpleName
 
-    fun getListItems(nameItem: String, listener: (List<Item>?) -> Unit) {
-        val IApiService = IApiService.create().getItems(nameItem)
-        IApiService.enqueue(object : Callback<List<Item>> {
-            override fun onResponse(call: Call<List<Item>>?, response: Response<List<Item>>?) {
+    fun getListItems(nameItem: String, listener: (Item?) -> Unit) {
+        val apiService = IApiService.create().getItems(nameItem)
+        apiService.enqueue(object : Callback<Item> {
+            override fun onResponse(call: Call<Item>?, response: Response<Item>?) {
                 if (response?.body() != null) {
                     listener(response.body())
                     Log.d(TAG, "onResponse ${response.body()}")
@@ -24,7 +24,7 @@ class RetrofitManager {
                 }
             }
 
-            override fun onFailure(call: Call<List<Item>>, t: Throwable) {
+            override fun onFailure(call: Call<Item>, t: Throwable) {
                 listener(null)
                 Log.d(TAG, "onFailure ${t.message}")
             }

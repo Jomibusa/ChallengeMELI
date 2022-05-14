@@ -11,7 +11,7 @@ import retrofit2.http.Query
 interface IApiService {
 
     @GET(EndPointList.GET_ITEMS)
-    fun getItems(@Query("q") nameItem: String): Call<List<Item>>
+    fun getItems(@Query("q") nameItem: String): Call<Item>
 
     companion object {
 

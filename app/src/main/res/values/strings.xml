@@ -6,4 +6,5 @@
     <string name="text_button_search">Buscar</string>
     <string name="text_no_data_available">No se encontró ningún resultado</string>
     <string name="text_allow_mercado_pago">Mercado Pago</string>
+    <string name="text_items_available">Disponibles</string>
 </resources>

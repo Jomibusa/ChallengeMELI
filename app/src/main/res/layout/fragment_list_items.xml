@@ -18,7 +18,7 @@
         android:layout_marginTop="16dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_users"
+        android:id="@+id/recycler_view_items"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,6 +60,5 @@
         android:layout_height="80dp"
         android:minWidth="50dp"
         android:minHeight="50dp" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
