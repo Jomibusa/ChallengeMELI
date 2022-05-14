@@ -8,21 +8,21 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface ApiService {
+interface IApiService {
 
-    @GET(EndPointList.GET_PRODUCTS)
+    @GET(EndPointList.GET_ITEMS)
     fun getItems(@Query("q") nameItem: String): Call<List<Item>>
 
     companion object {
 
         var BASE_URL = "https://api.mercadolibre.com/"
 
-        fun create(): ApiService {
+        fun create(): IApiService {
             val retrofit = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BASE_URL)
                 .build()
-            return retrofit.create(ApiService::class.java)
+            return retrofit.create(IApiService::class.java)
         }
     }
 

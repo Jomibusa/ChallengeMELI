@@ -4,4 +4,6 @@
     <string name="text_api_meli">Api MercadoLibre</string>
     <string name="text_hint_search_product">Busca un item...</string>
     <string name="text_button_search">Buscar</string>
+    <string name="text_no_data_available">No se encontró ningún resultado</string>
+    <string name="text_allow_mercado_pago">Mercado Pago</string>
 </resources>
