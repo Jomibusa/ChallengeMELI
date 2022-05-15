@@ -6,13 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.jomibusa.challengemeli.R
+import com.jomibusa.challengemeli.adapter.ItemDetailAdapter
 import com.jomibusa.challengemeli.base.BaseFragment
+import com.jomibusa.challengemeli.data.model.Attributes
 import com.jomibusa.challengemeli.databinding.FragmentDetailItemBinding
-import com.jomibusa.challengemeli.interfaces.IDetailItemCT
-import com.jomibusa.challengemeli.interfaces.IListItemCT
-import com.jomibusa.challengemeli.presenter.DetailItemPT
-import com.jomibusa.challengemeli.presenter.ListItemPT
 import com.jomibusa.challengemeli.util.Util
 import com.squareup.picasso.Picasso
 
@@ -23,7 +23,7 @@ class DetailItemFragment : BaseFragment() {
 
     private val args: DetailItemFragmentArgs by navArgs()
 
-    private lateinit var presenter: IDetailItemCT.Presenter
+    private lateinit var detailAdapter: ItemDetailAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,10 +35,8 @@ class DetailItemFragment : BaseFragment() {
 
         setInitData()
 
-        presenter = DetailItemPT()
-
         args.item.attributes?.let {
-            presenter.start(binding.recyclerViewAttributes, it)
+            setAdapter(it)
         }
 
 
@@ -76,6 +74,23 @@ class DetailItemFragment : BaseFragment() {
                 Picasso.get().load(Util.replaceUrl(args.item.imageItem))
                     .placeholder(R.drawable.default_item).into(includeDetail.imageViewItem)
             }
+        }
+    }
+
+    private fun setAdapter(listAttributes: List<Attributes>) {
+        detailAdapter = ItemDetailAdapter()
+        detailAdapter.submitList(listAttributes)
+        val layout = LinearLayoutManager(requireContext())
+        binding.recyclerViewAttributes.apply {
+            layoutManager = layout
+            isNestedScrollingEnabled = false
+            adapter = detailAdapter
+            addItemDecoration(
+                DividerItemDecoration(
+                    requireContext(),
+                    layout.orientation
+                )
+            )
         }
     }
 

@@ -6,8 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.jomibusa.challengemeli.R
+import com.jomibusa.challengemeli.adapter.ItemAdapter
 import com.jomibusa.challengemeli.base.BaseFragment
+import com.jomibusa.challengemeli.data.model.Item
 import com.jomibusa.challengemeli.data.model.Results
 import com.jomibusa.challengemeli.databinding.FragmentListItemsBinding
 import com.jomibusa.challengemeli.interfaces.IListItemCT
@@ -22,6 +25,8 @@ class ListItemsFragment : BaseFragment(), IListItemCT.View {
 
     private lateinit var presenter: IListItemCT.Presenter
 
+    private lateinit var itemAdapter: ItemAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,7 +37,7 @@ class ListItemsFragment : BaseFragment(), IListItemCT.View {
 
         presenter = ListItemPT(this@ListItemsFragment)
 
-        presenter.start(binding.recyclerViewItems, args.nameItem)
+        presenter.start(args.nameItem)
 
         binding.materialButtonBack.setOnClickListener {
             findNavController().popBackStack()
@@ -55,6 +60,21 @@ class ListItemsFragment : BaseFragment(), IListItemCT.View {
                     findNavController().popBackStack()
                 }
             }
+        }
+    }
+
+    override fun setAdapter(item: Item) {
+        activity?.let {
+            itemAdapter = ItemAdapter { result ->
+                navigateToDetailItem(result)
+            }
+            itemAdapter.submitList(item.results)
+            binding.recyclerViewItems.apply {
+                layoutManager = LinearLayoutManager(context)
+                isNestedScrollingEnabled = false
+                adapter = itemAdapter
+            }
+            showListItems(true)
         }
     }
 
@@ -98,6 +118,11 @@ class ListItemsFragment : BaseFragment(), IListItemCT.View {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.cancelRequest()
     }
 
 }

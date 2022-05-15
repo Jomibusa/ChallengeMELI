@@ -1,19 +1,22 @@
 package com.jomibusa.challengemeli.interfaces
 
-import android.content.Context
-import androidx.recyclerview.widget.RecyclerView
+import com.jomibusa.challengemeli.data.model.Item
 import com.jomibusa.challengemeli.data.model.Results
 
 interface IListItemCT {
 
     interface Presenter {
 
-        fun start(recyclerView: RecyclerView, itemName: String)
+        fun start(itemName: String)
+
+        fun cancelRequest()
 
     }
 
 
     interface View {
+
+        fun setAdapter(item: Item)
 
         fun showListItems(show: Boolean)
 

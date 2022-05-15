@@ -12,6 +12,8 @@ class RetrofitManager {
 
     private val TAG = RetrofitManager::class.java.simpleName
 
+    private var apiService: Call<Item>? = null
+
     interface IOnDetailFetched {
         fun onSuccess(item: Item)
         fun onFailure()
@@ -19,8 +21,8 @@ class RetrofitManager {
     }
 
     fun getListItems(nameItem: String, listener: IOnDetailFetched) {
-        val apiService = IApiService.create().getItems(nameItem)
-        apiService.enqueue(object : Callback<Item> {
+        apiService = IApiService.create().getItems(nameItem)
+        apiService?.enqueue(object : Callback<Item> {
             override fun onResponse(call: Call<Item>?, response: Response<Item>?) {
                 response?.let {
                     if (it.isSuccessful) {
@@ -54,6 +56,10 @@ class RetrofitManager {
             }
         }
         Log.d(TAG, "onResponse $item")
+    }
+
+    fun cancelRequest() {
+        apiService?.cancel()
     }
 
 }
