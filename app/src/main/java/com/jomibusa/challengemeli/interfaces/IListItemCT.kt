@@ -17,7 +17,7 @@ interface IListItemCT {
 
         fun showListItems(show: Boolean)
 
-        fun showNotData(show: Boolean)
+        fun showInfoData(show: Boolean, message: Int? = null)
 
         fun showLoading(show: Boolean)
 

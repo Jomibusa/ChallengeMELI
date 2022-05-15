@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".view.ListItemsFragment">
 
+    <include
+        android:id="@+id/container_toolbar"
+        layout="@layout/custom_toolbar"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_items"
         android:layout_width="0dp"
@@ -15,7 +20,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/container_toolbar"
         tools:itemCount="10"
         tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_list"
@@ -24,20 +29,34 @@
         tools:visibility="visible" />
 
     <TextView
-        android:id="@+id/text_view_no_data"
+        android:id="@+id/text_view_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="20dp"
-        android:text="@string/text_no_data_available"
-        android:textColor="@color/black"
+        android:padding="16dp"
+        android:textColor="@color/meli_blue"
         android:textSize="24sp"
         android:textStyle="bold"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/text_no_data_available" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/material_button_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:padding="16dp"
+        android:text="@string/text_button_back"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        app:backgroundTint="@color/meli_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_info" />
 
     <ProgressBar
         android:id="@+id/progress_bar"

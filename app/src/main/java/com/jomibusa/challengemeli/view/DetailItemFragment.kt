@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.jomibusa.challengemeli.R
 import com.jomibusa.challengemeli.base.BaseFragment
@@ -30,6 +31,8 @@ class DetailItemFragment : BaseFragment() {
     ): View {
         _binding = FragmentDetailItemBinding.inflate(inflater, container, false)
 
+        setToolBar()
+
         setInitData()
 
         presenter = DetailItemPT()
@@ -38,7 +41,25 @@ class DetailItemFragment : BaseFragment() {
             presenter.start(binding.recyclerViewAttributes, it)
         }
 
+
         return binding.root
+    }
+
+    private fun setToolBar() {
+        binding.apply {
+            containerToolbar.toolbar.apply {
+                title = getString(R.string.text_title_toolbar_detail)
+
+                navigationIcon?.mutate()?.let {
+                    it.setTint(requireContext().getColor(R.color.meli_blue))
+                    containerToolbar.toolbar.navigationIcon = it
+                }
+
+                setNavigationOnClickListener {
+                    findNavController().popBackStack()
+                }
+            }
+        }
     }
 
     private fun setInitData() {

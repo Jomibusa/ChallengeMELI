@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.jomibusa.challengemeli.R
 import com.jomibusa.challengemeli.base.BaseFragment
 import com.jomibusa.challengemeli.data.model.Results
 import com.jomibusa.challengemeli.databinding.FragmentListItemsBinding
@@ -27,11 +28,34 @@ class ListItemsFragment : BaseFragment(), IListItemCT.View {
     ): View {
         _binding = FragmentListItemsBinding.inflate(inflater, container, false)
 
+        setToolBar()
+
         presenter = ListItemPT(this@ListItemsFragment)
 
         presenter.start(binding.recyclerViewItems, args.nameItem)
 
+        binding.materialButtonBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
         return binding.root
+    }
+
+    private fun setToolBar() {
+        binding.apply {
+            containerToolbar.toolbar.apply {
+                title = getString(R.string.text_title_toolbar_results)
+
+                navigationIcon?.mutate()?.let {
+                    it.setTint(requireContext().getColor(R.color.meli_blue))
+                    containerToolbar.toolbar.navigationIcon = it
+                }
+
+                setNavigationOnClickListener {
+                    findNavController().popBackStack()
+                }
+            }
+        }
     }
 
     override fun showListItems(show: Boolean) {
@@ -42,11 +66,16 @@ class ListItemsFragment : BaseFragment(), IListItemCT.View {
         }
     }
 
-    override fun showNotData(show: Boolean) {
+    override fun showInfoData(show: Boolean, message: Int?) {
         if (show) {
-            binding.textViewNoData.visibility = View.VISIBLE
+            message?.let {
+                binding.textViewInfo.text = requireContext().getString(it)
+            }
+            binding.textViewInfo.visibility = View.VISIBLE
+            binding.materialButtonBack.visibility = View.VISIBLE
         } else {
-            binding.textViewNoData.visibility = View.GONE
+            binding.textViewInfo.visibility = View.GONE
+            binding.materialButtonBack.visibility = View.GONE
         }
     }
 

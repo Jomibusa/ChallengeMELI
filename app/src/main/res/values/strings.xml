@@ -5,7 +5,11 @@
     <string name="text_hint_search_product">Busca un item...</string>
     <string name="text_button_search">Buscar</string>
     <string name="text_no_data_available">No se encontró ningún resultado</string>
+    <string name="text_no_data_error">Ocurrió un error, por favor intentalo de nuevo más tarde</string>
     <string name="text_allow_mercado_pago">Mercado Pago</string>
     <string name="text_items_available">Disponibles</string>
     <string name="text_detail_item">Caracteristicas del producto</string>
+    <string name="text_button_back">Regresar</string>
+    <string name="text_title_toolbar_detail">Detalle</string>
+    <string name="text_title_toolbar_results">Resultados</string>
 </resources>
