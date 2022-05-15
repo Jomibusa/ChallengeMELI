@@ -10,6 +10,10 @@ import androidx.navigation.fragment.findNavController
 import com.jomibusa.challengemeli.base.BaseFragment
 import com.jomibusa.challengemeli.databinding.FragmentSplashBinding
 
+/**
+ * @author Jomibusa
+ */
+
 class SplashFragment : BaseFragment() {
 
     private var _binding: FragmentSplashBinding? = null
@@ -24,6 +28,9 @@ class SplashFragment : BaseFragment() {
 
         val timeSplash = 2000L
 
+        /**
+         * Se espera un determinado tiempo para luego ser redirigido al fragment de consulta
+         */
         Handler(Looper.getMainLooper()).postDelayed({
             findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToSearchFragment())
         }, timeSplash)

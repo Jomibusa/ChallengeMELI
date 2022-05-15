@@ -16,6 +16,10 @@ import com.jomibusa.challengemeli.databinding.FragmentDetailItemBinding
 import com.jomibusa.challengemeli.util.Util
 import com.squareup.picasso.Picasso
 
+/**
+ * @author Jomibusa
+ */
+
 class DetailItemFragment : BaseFragment() {
 
     private var _binding: FragmentDetailItemBinding? = null
@@ -43,6 +47,10 @@ class DetailItemFragment : BaseFragment() {
         return binding.root
     }
 
+    /**
+     * Función utilizada para configurar el custom Toolbar en la pantalla y dar las respectivas
+     * funcionalidades necesarias
+     */
     private fun setToolBar() {
         binding.apply {
             containerToolbar.toolbar.apply {
@@ -60,6 +68,10 @@ class DetailItemFragment : BaseFragment() {
         }
     }
 
+    /**
+     * Función utilizada para realizar el seteo de información previa que ya se obtiene desde el
+     * fragment anterior y que llega a este por medio de los SafeArgs
+     */
     private fun setInitData() {
         binding.apply {
             includeDetail.textViewNameItem.text = args.item.title
@@ -77,6 +89,12 @@ class DetailItemFragment : BaseFragment() {
         }
     }
 
+    /**
+     * Función utilizada para realizar la respectiva configuración del adapter utilizado en este
+     * fragment
+     * @param listAttributes Lista de atributos que se utilizaran para pintar la información en la
+     * vista del detalle del item seleccionado
+     */
     private fun setAdapter(listAttributes: List<Attributes>) {
         detailAdapter = ItemDetailAdapter()
         detailAdapter.submitList(listAttributes)

@@ -4,6 +4,10 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
+/**
+ * @author Jomibusa
+ */
+
 data class Item(
     @SerializedName("results") val results: List<Results>
 )

@@ -5,8 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.jomibusa.challengemeli.R
 import com.jomibusa.challengemeli.base.BaseFragment
 import com.jomibusa.challengemeli.databinding.FragmentSearchBinding
+
+/**
+ * @author Jomibusa
+ */
 
 class SearchFragment : BaseFragment() {
 
@@ -21,6 +26,11 @@ class SearchFragment : BaseFragment() {
 
         binding.apply {
 
+            /*
+             * Se valida que al momento de oprimir el botón de consulta en este ya haya sido
+             * escrito algo para proceder a la siguiente vista o de lo contrario dará aviso al
+             * usuario
+             */
             materialButtonSearch.setOnClickListener {
                 val nameProduct = textInputEditTextSearch.text.toString()
 
@@ -32,7 +42,8 @@ class SearchFragment : BaseFragment() {
                         )
                     )
                 } else {
-                    textInputLayoutSearch.error = "Debes ingresar el producto a consultar"
+                    textInputLayoutSearch.error =
+                        requireContext().getString(R.string.text_validation_text_search)
                 }
             }
 

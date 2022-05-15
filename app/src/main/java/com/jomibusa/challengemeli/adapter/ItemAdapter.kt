@@ -10,6 +10,10 @@ import com.jomibusa.challengemeli.databinding.ItemListBinding
 import com.jomibusa.challengemeli.util.Util
 import com.squareup.picasso.Picasso
 
+/**
+ * @author Jomibusa
+ */
+
 class ItemAdapter(private val onClick: (Results) -> Unit) :
     RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 

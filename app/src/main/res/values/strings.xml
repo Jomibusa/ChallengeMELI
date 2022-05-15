@@ -12,4 +12,5 @@
     <string name="text_button_back">Regresar</string>
     <string name="text_title_toolbar_detail">Detalle</string>
     <string name="text_title_toolbar_results">Resultados</string>
+    <string name="text_validation_text_search">Debes ingresar el producto a consultar</string>
 </resources>

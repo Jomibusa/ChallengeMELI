@@ -3,6 +3,10 @@ package com.jomibusa.challengemeli.base
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 
+/**
+ * @author Jomibusa
+ */
+
 open class BaseFragment: Fragment()  {
 
     override fun onCreate(savedInstanceState: Bundle?) {

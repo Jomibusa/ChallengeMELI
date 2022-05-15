@@ -3,6 +3,10 @@ package com.jomibusa.challengemeli.interfaces
 import com.jomibusa.challengemeli.data.model.Item
 import com.jomibusa.challengemeli.data.model.Results
 
+/**
+ * @author Jomibusa
+ */
+
 interface IListItemCT {
 
     interface Presenter {

@@ -7,6 +7,10 @@ import com.jomibusa.challengemeli.data.model.Attributes
 import com.jomibusa.challengemeli.data.model.Results
 import com.jomibusa.challengemeli.databinding.ItemDetailListBinding
 
+/**
+ * @author Jomibusa
+ */
+
 class ItemDetailAdapter : RecyclerView.Adapter<ItemDetailAdapter.DetailViewHolder>() {
 
     private var attributeList: List<Attributes> = listOf()
