@@ -1,9 +1,11 @@
 package com.jomibusa.challengemeli.view
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import com.jomibusa.challengemeli.R
 import com.jomibusa.challengemeli.base.BaseFragment
@@ -50,6 +52,35 @@ class SearchFragment : BaseFragment() {
         }
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    showMessageConfirmationCloseApp()
+                }
+            }
+        )
+    }
+
+    private fun showMessageConfirmationCloseApp() {
+        val dialog = AlertDialog.Builder(requireContext())
+            .setTitle(getString(R.string.text_title_validate_close_app))
+            .setMessage(getString(R.string.text_message_validate_close_app))
+            .setPositiveButton(android.R.string.ok) { view, _ ->
+                requireActivity().finish()
+                view.dismiss()
+            }
+            .setNegativeButton(android.R.string.cancel) { view, _ ->
+                view.dismiss()
+            }
+            .setCancelable(false)
+            .create()
+        dialog.show()
     }
 
     override fun onDestroyView() {

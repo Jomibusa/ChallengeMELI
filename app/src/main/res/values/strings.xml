@@ -13,4 +13,6 @@
     <string name="text_title_toolbar_detail">Detalle</string>
     <string name="text_title_toolbar_results">Resultados</string>
     <string name="text_validation_text_search">Debes ingresar el producto a consultar</string>
+    <string name="text_title_validate_close_app">¡Atención!</string>
+    <string name="text_message_validate_close_app">¿Estás seguro de querer salir de la aplicación?</string>
 </resources>
