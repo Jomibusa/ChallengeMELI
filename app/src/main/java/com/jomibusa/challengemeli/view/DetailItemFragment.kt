@@ -12,9 +12,11 @@ import com.jomibusa.challengemeli.R
 import com.jomibusa.challengemeli.adapter.ItemDetailAdapter
 import com.jomibusa.challengemeli.base.BaseFragment
 import com.jomibusa.challengemeli.data.model.Attributes
+import com.jomibusa.challengemeli.data.model.Results
 import com.jomibusa.challengemeli.databinding.FragmentDetailItemBinding
 import com.jomibusa.challengemeli.util.Util
 import com.squareup.picasso.Picasso
+import java.util.*
 
 /**
  * @author Jomibusa
@@ -79,6 +81,7 @@ class DetailItemFragment : BaseFragment() {
             val quantity =
                 "${args.item.quantity} ${binding.root.context.getString(R.string.text_items_available)}"
             includeDetail.textViewQuantity.text = quantity
+            processCondition(args.item)
             if (args.item.mercadoPago) {
                 includeDetail.textViewMercadoPago.visibility = View.VISIBLE
             }
@@ -86,6 +89,22 @@ class DetailItemFragment : BaseFragment() {
                 Picasso.get().load(Util.replaceUrl(args.item.imageItem))
                     .placeholder(R.drawable.default_item).into(includeDetail.imageViewItem)
             }
+        }
+    }
+
+    /**
+     * Función utilizada para setear la información relacionada en cuanto a la condición del
+     * producto
+     */
+    private fun processCondition(item: Results) {
+        if (item.condition != null) {
+            binding.includeDetail.textViewCondition.text = item.condition.replaceFirstChar {
+                if (it.isLowerCase()) it.titlecase(
+                    Locale.ROOT
+                ) else it.toString()
+            }
+        } else {
+            binding.includeDetail.textViewCondition.visibility = View.GONE
         }
     }
 

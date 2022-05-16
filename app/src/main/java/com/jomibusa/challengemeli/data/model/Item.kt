@@ -17,6 +17,7 @@ data class Results(
     @SerializedName("title") val title: String,
     @SerializedName("price") val price: Double,
     @SerializedName("available_quantity") val quantity: Int,
+    @SerializedName("condition") val condition: String?,
     @SerializedName("thumbnail") val imageItem: String,
     @SerializedName("attributes") val attributes: List<Attributes>?,
     @SerializedName("accepts_mercadopago") val mercadoPago: Boolean

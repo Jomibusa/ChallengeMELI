@@ -9,6 +9,7 @@ import com.jomibusa.challengemeli.data.model.Results
 import com.jomibusa.challengemeli.databinding.ItemListBinding
 import com.jomibusa.challengemeli.util.Util
 import com.squareup.picasso.Picasso
+import java.util.*
 
 /**
  * @author Jomibusa
@@ -59,6 +60,7 @@ class ItemAdapter(private val onClick: (Results) -> Unit) :
                 val quantity =
                     "${item.quantity} ${binding.root.context.getString(R.string.text_items_available)}"
                 textViewQuantity.text = quantity
+                processCondition(item)
                 if (item.mercadoPago) {
                     textViewMercadoPago.visibility = View.VISIBLE
                 }
@@ -66,6 +68,22 @@ class ItemAdapter(private val onClick: (Results) -> Unit) :
                     Picasso.get().load(Util.replaceUrl(item.imageItem))
                         .placeholder(R.drawable.default_item).into(imageViewItem)
                 }
+            }
+        }
+
+        /**
+         * Función utilizada para setear la información relacionada en cuanto a la condición del
+         * producto
+         */
+        private fun processCondition(item: Results) {
+            if (item.condition != null) {
+                binding.textViewCondition.text = item.condition.replaceFirstChar {
+                    if (it.isLowerCase()) it.titlecase(
+                        Locale.ROOT
+                    ) else it.toString()
+                }
+            } else {
+                binding.textViewCondition.visibility = View.GONE
             }
         }
     }

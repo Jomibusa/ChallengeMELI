@@ -91,6 +91,24 @@
             tools:text="10 Disponibles" />
 
         <TextView
+            android:id="@+id/text_view_condition"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:drawablePadding="10dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:drawableStartCompat="@drawable/ic_condition"
+            app:drawableTint="@color/meli_blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/text_view_quantity"
+            tools:text="new" />
+
+        <TextView
             android:id="@+id/text_view_mercado_pago"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -109,7 +127,7 @@
             app:drawableTint="@color/meli_blue"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text_view_quantity"
+            app:layout_constraintTop_toBottomOf="@id/text_view_condition"
             tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
