@@ -1,35 +1,42 @@
 package com.jomibusa.challengemeli.data.network
 
-import com.jomibusa.challengemeli.interfaces.IListItemCT
-import com.jomibusa.challengemeli.presenter.ListItemPT
-import io.mockk.MockKAnnotations
-import io.mockk.verify
-import io.mockk.verifySequence
-import org.junit.Before
+import com.jomibusa.challengemeli.interfaces.IApiService
+import org.hamcrest.CoreMatchers
+import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
-import org.mockito.ArgumentCaptor
-import org.mockito.Captor
-import org.mockito.Mock
-import org.mockito.Mockito.times
-
 
 class RetrofitManagerTest {
 
-    private lateinit var presenter: IListItemCT.Presenter
+    @Test
+    fun doConsumeWithRetrofitAndGetTheModel() {
+        val callResponse = IApiService.create().getItems("computadora")
 
-    @Mock
-    private val view: IListItemCT.View? = null
+        try {
+            val response = callResponse.execute()
+            val item = response.body()
 
+            assertThat(response.isSuccessful && item != null, CoreMatchers.equalTo(true))
+            assertThat(item?.results?.isNotEmpty(), CoreMatchers.equalTo(true))
 
-    @Before
-    fun onBefore() {
-        MockKAnnotations.init(this)
-        presenter = ListItemPT(view)
+        } catch (e: Exception) {
+            println("Error $e")
+        }
     }
 
     @Test
-    fun doConsumeOfAWordFromApiAndReturnTheModel() {
-        presenter.start("Motorola")
+    fun doConsumeWithNotValidWordWithRetrofitAndGetEmptyResult() {
+        val callResponse = IApiService.create().getItems("asjfsdk12vbsdv12")
+
+        try {
+            val response = callResponse.execute()
+            val item = response.body()
+
+            assertThat(response.isSuccessful && item != null, CoreMatchers.equalTo(true))
+            assertThat(item?.results?.isEmpty(), CoreMatchers.equalTo(true))
+
+        } catch (e: Exception) {
+            println("Error $e")
+        }
     }
 
 }
